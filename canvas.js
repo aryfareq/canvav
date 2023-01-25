@@ -14,9 +14,9 @@ let hue = 0;
 let direction = true;
 
 function draw(e) {
-    if(!isDrawing) return;
-    console.log('working');
-    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+  var color = document.getElementById('color').value;  
+  if(!isDrawing) return;
+    ctx.strokeStyle = color;
     ctx.beginPath();
     ctx.moveTo(lastX, lastY);
     ctx.lineTo(e.offsetX, e.offsetY);
@@ -24,13 +24,11 @@ function draw(e) {
     [lastX, lastY] = [e.offsetX, e.offsetY];
 
     var checkBox = document.getElementById("check");
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
     if (checkBox.checked == true){
       hue++;
       if (hue >= 360) {
       hue = 0;}
-    }
-    if (hue >= 360) {
-      hue = 0;
     }
     if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
       direction = !direction;
@@ -41,7 +39,6 @@ function draw(e) {
     } else {
       ctx.lineWidth--;
     }
-    console.log('hello');
   }
 
 canvas.addEventListener('mousemove', draw);
