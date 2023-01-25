@@ -10,6 +10,10 @@
     </head>
     <body>
         <canvas id="Draw" width="800" height="800"></canvas>
+        <nav><input type="color">Color</input>
+            <input type="checkbox" id="check">Dance</input>
+            <input type="range">Size</input>
+        </nav>
         <script src="/canvas.js" async defer></script>
         
     </body>
@@ -23,6 +27,15 @@
         position: absolute;
         top: 50%;
         left: 50%;
+    }
+    nav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: antiquewhite;
+        width: 500px;
+        margin: auto;
+        border-radius: 10px;
     }
   </style>
   

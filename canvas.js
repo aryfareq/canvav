@@ -23,7 +23,12 @@ function draw(e) {
     ctx.stroke();
     [lastX, lastY] = [e.offsetX, e.offsetY];
 
-    hue++;
+    var checkBox = document.getElementById("check");
+    if (checkBox.checked == true){
+      hue++;
+      if (hue >= 360) {
+      hue = 0;}
+    }
     if (hue >= 360) {
       hue = 0;
     }
