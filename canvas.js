@@ -12,9 +12,12 @@ let lastX = 0;
 let lastY = 0;
 let hue = 0;
 let direction = true;
+var checkBox = document.getElementById("check");
+let colorON =true
 
 function draw(e) {
-  var color = document.getElementById('color').value;  
+  if (colorON) {
+  var color = document.getElementById('color').value;}
   if(!isDrawing) return;
     ctx.strokeStyle = color;
     ctx.beginPath();
@@ -23,9 +26,8 @@ function draw(e) {
     ctx.stroke();
     [lastX, lastY] = [e.offsetX, e.offsetY];
 
-    var checkBox = document.getElementById("check");
-    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
-    if (checkBox.checked == true){
+    if (checkBox.checked == true && colorON == false){
+      ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
       hue++;
       if (hue >= 360) {
       hue = 0;}
@@ -48,3 +50,10 @@ canvas.addEventListener('mousedown', (e) => {
 });
 canvas.addEventListener('mouseup', () => isDrawing = false);
 canvas.addEventListener('mouseout', () => isDrawing = false);
+checkBox.addEventListener('change', function() {
+  if (this.checked) {
+    colorON = false;
+  } else {
+    colorON = true;
+  }
+});
